@@ -19,11 +19,18 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(centerTitle: true, title: Text("$appbarTitle")),
       body: Container(
         child: FutureBuilder(
-          future: PostalCodeService().getPostalCode(pinCode: pinCode),
+          future: PostalCodeService().getPostalCode(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
               return Container(
                 child: const Center(child: CircularProgressIndicator()),
+              );
+            }
+            if (snapshot.data.length == 0) {
+              return Container(
+                child: const Center(
+                  child: Text("No data found ...."),
+                ),
               );
             }
             return Column(

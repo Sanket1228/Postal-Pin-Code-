@@ -4,14 +4,19 @@ import 'dart:convert';
 import 'dart:async';
 
 class PostalCodeService {
-  Future<List<PostOffice>> getPostalCode({int pinCode = 422206}) async {
-    print(pinCode);
+  Future<List<PostOffice>> getPostalCode({int pinCode = 110001}) async {
+    // print(pinCode);
     http.Response response = await http
         .get(Uri.parse("https://api.postalpincode.in/pincode/$pinCode"));
-    var decodedCode = json.decode(response.body);
-    List<PostOffice> postalCodeList = await decodedCode[0]["PostOffice"]
-        .map<PostOffice>((json) => PostOffice.fromJson(json))
-        .toList();
-    return postalCodeList;
+    try {
+      var decodedCode = json.decode(response.body);
+      List<PostOffice> postalCodeList = await decodedCode[0]["PostOffice"]
+          .map<PostOffice>((json) => PostOffice.fromJson(json))
+          .toList();
+      return postalCodeList;
+    } catch (e) {
+      List<PostOffice> postalCodeList = [];
+      return postalCodeList;
+    }
   }
 }

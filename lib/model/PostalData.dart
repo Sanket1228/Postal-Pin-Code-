@@ -16,16 +16,6 @@ class PostalCode {
       });
     }
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Message'] = this.message;
-    data['Status'] = this.status;
-    if (this.postOffice != null) {
-      data['PostOffice'] = this.postOffice.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
 }
 
 class PostOffice {
@@ -63,20 +53,5 @@ class PostOffice {
     region = json['Region'];
     state = json['State'];
     country = json['Country'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Name'] = this.name;
-    data['Description'] = this.description;
-    data['BranchType'] = this.branchType;
-    data['DeliveryStatus'] = this.deliveryStatus;
-    data['Circle'] = this.circle;
-    data['District'] = this.district;
-    data['Division'] = this.division;
-    data['Region'] = this.region;
-    data['State'] = this.state;
-    data['Country'] = this.country;
-    return data;
   }
 }
