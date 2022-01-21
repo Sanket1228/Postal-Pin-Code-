@@ -11,10 +11,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String appbarTitle = "Postal Codes";
+  int pinCode = 422207;
 
   @override
   Widget build(BuildContext context) {
-    int pinCode = 422207;
     return Scaffold(
       appBar: AppBar(centerTitle: true, title: Text("$appbarTitle")),
       body: Container(
