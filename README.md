@@ -1,6 +1,6 @@
 # postalpincode
 
-A new Flutter project.
+Flutter app to display postal pin .
 
 ## Getting Started
 
