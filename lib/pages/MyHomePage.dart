@@ -16,10 +16,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: Text("$appbarTitle")),
+      appBar: AppBar(centerTitle: true, title: Text(appbarTitle)),
       body: Container(
         child: FutureBuilder(
-          future: PostalCodeService().getPostalCode(),
+          future: PostalCodeService().getPostalCode(pinCode: pinCode),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
               return Container(
